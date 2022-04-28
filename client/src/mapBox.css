@@ -1,9 +1,19 @@
-.map-container {
+#map-container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     align-content: center;
+    justify-content: center;
+}
+
+main section {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
 }
 
 .map {

@@ -1,13 +1,19 @@
 import ReactDOM from "react-dom";
 import App from "./app.js";
 import "mapbox-gl/dist/mapbox-gl.css";
+import { Provider } from "react-redux";
+import { createStore, applyMiddleware } from "redux";
+import * as immutableState from "redux-immutable-state-invariant";
+import reducer from "./redux/reducer.js";
 
-ReactDOM.render(<HelloWorld />, document.querySelector("main"));
+const store = createStore(reducer, applyMiddleware(immutableState.default()));
 
-function HelloWorld() {
-    return (
+ReactDOM.render(
+    <Provider store={store}>
         <>
             <App />
         </>
-    );
-}
+        
+    </Provider>,
+    document.querySelector("main")
+);

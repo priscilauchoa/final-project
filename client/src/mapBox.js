@@ -91,34 +91,53 @@ export default function Mapbox() {
     }, []);
 
     const onSearchLocation = (e) => {
-        console.log("geocode input changed", e);
+        // console.log("geocode input changed", e);
+        console.log("geocode input changed", e.text);
         setValue(e.result);
+        console.log(
+            "geocode input changed",
+            e.text,
+            e.geometry.coordinates[0],
+            e.geometry.coordinates[0]
+        );
+        console.log("a request to locations was made");
+
+        fetch("/locations", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((rows) => {
+                console.log("rows front end", rows);
+            })
+            .catch((err) => {
+                console.log("err", err);
+            });
     };
-    console.log("value", value);
-
-    fetch("/location",)
-
-
-
+    // console.log("value", value);
 
     return (
-        <div style={{ height: "100vh" }}>
-            <MapGL
-                ref={mapRef}
-                {...viewport}
-                width="100%"
-                height="100%"
-                onViewportChange={handleViewportChange}
-                mapboxApiAccessToken={TOKEN}
-            >
-                <Geocoder
-                    mapRef={mapRef}
-                    onViewportChange={handleGeocoderViewportChange}
+        <section id="map-container">
+            <div style={{ height: "60vh", width: "80vw" }}>
+                <MapGL
+                    ref={mapRef}
+                    {...viewport}
+                    width="80vw"
+                    height="80vw"
+                    onViewportChange={handleViewportChange}
                     mapboxApiAccessToken={TOKEN}
-                    position="top-left"
-                    onResult={onSearchLocation}
-                />
-            </MapGL>
-        </div>
+                >
+                    <Geocoder
+                        mapRef={mapRef}
+                        onViewportChange={handleGeocoderViewportChange}
+                        mapboxApiAccessToken={TOKEN}
+                        position="top-left"
+                        onResult={onSearchLocation}
+                    />
+                </MapGL>
+            </div>
+        </section>
     );
 }
