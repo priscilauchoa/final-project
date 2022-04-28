@@ -1,0 +1,13 @@
+.map-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+.map {
+    margin: 20px;
+    height: 400px;
+    width: 500px;
+}

@@ -1,0 +1,13 @@
+.map-query-container {
+  left: 50px;
+  position: absolute;
+  top: 50px;
+}
+
+.map-query-options {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 4px;
+  list-style-type: none;
+  padding: 0;
+}
