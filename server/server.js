@@ -15,12 +15,20 @@ app.get("/locations", function (req, res) {
     });
 });
 
-app.post("/locations", function (req, res) {
-    const { name, lag, long } = req.body;
-    db.insertLocation(name, lag, long).then(({ rows }) => {
+app.get("/api/needies", function (req, res) {
+    db.getNeedies().then(({ rows }) => {
         console.log("rows in data base", rows);
         res.json({ rows });
     });
+});
+
+app.post("/api/locations", function (req, res) {
+    // const { name, lag, long } = req.body;
+    console.log("body---> ", req.body);
+    // db.insertLocation(name, lag, long).then(({ rows }) => {
+    //     console.log("rows in data base", rows);
+    //     res.json({ rows });
+    // });
 });
 
 app.get("*", function (req, res) {
