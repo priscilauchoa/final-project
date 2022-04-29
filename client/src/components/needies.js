@@ -17,13 +17,13 @@ export function Needies() {
     useEffect(() => {
         fetch("/api/needies")
             .then((res) => res.json())
-            .then((data) => {
-                console.log("data", data);
-                if (!data.sucess) {
+            .then(({ rows }) => {
+                console.log("data", rows);
+                if (!rows) {
                     history.push("/");
                 } else {
-                    console.log("user", data);
-                    setNeedies(data);
+                    console.log("user", rows);
+                    setNeedies(rows);
                     console.log("needies fetched", needies);
                 }
             });
@@ -37,22 +37,35 @@ export function Needies() {
             neediesContainer.current.scrollHeight;
     }, []);
 
+    let img = [
+        "../img/help1.jpeg",
+        "../img/help2.jpeg",
+        "../img/help3.jpeg",
+        "../img/help4.jpeg",
+        "../img/help5.jpeg",
+        "../img/help5.jpeg",
+    ];
+    let randomImg = Math.floor(Math.random() * img.length);
+
     return (
         <>
             <section>
                 <h1>Needies</h1>
                 <section ref={neediesContainer} className="needies-container">
-                    <div>
+                    <div className="needies-container">
                         {needies.length > 0 &&
                             needies.map((needy) => {
                                 return (
                                     <div className="needies" key={needy.id}>
-                                        <Card sx={{ maxWidth: 345 }}>
+                                        <Card
+                                            sx={{
+                                                maxWidth: 345,
+                                            }}
+                                        >
                                             <CardMedia
                                                 component="img"
                                                 height="140"
-                                                image="/static/images/cards/contemplative-reptile.jpg"
-                                                alt="green iguana"
+                                                image={randomImg}
                                             />
                                             <CardContent>
                                                 <Typography
@@ -60,13 +73,19 @@ export function Needies() {
                                                     variant="h5"
                                                     component="div"
                                                 >
-                                                    Lizard
+                                                    {needy.needy}
                                                 </Typography>
                                                 <Typography
                                                     variant="body2"
                                                     color="text.secondary"
                                                 >
-                                                    {needy}
+                                                    {needy.description}
+                                                </Typography>
+                                                <Typography
+                                                    variant="body2"
+                                                    color="text.secondary"
+                                                >
+                                                    {needy.name}
                                                 </Typography>
                                             </CardContent>
                                             <CardActions>
@@ -77,19 +96,18 @@ export function Needies() {
                                                     Learn More
                                                 </Button>
                                             </CardActions>
+                                            <Typography>
+                                                {/* {needy.description} */}
+                                            </Typography>
                                         </Card>
 
-                                        {/* <img
-                                            className="profile-pic-needies"
-                                            src={needy.profile_pic}
-                                        ></img> */}
                                         <p>
                                             {/* {needy.first} {needy.last}:{"  "} */}
                                         </p>
                                     </div>
                                 );
                             })}
-                        <h1>NO NEEDIES</h1>
+                        {/* <h1>NO NEEDIES</h1> */}
                     </div>
                 </section>
             </section>

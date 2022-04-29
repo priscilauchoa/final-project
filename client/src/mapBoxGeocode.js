@@ -46,22 +46,22 @@ export default function GeoSearch() {
     }, [query]);
 
     console.log("### places", places);
-    fetch("/api/locations", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            name: "Berlin",
-            geoJSON: {
-                type: "Feature",
-                geometry: {
-                    type: "Point",
-                    coordinates: [125.6, 10.1],
-                },
-            },
-        }),
-    });
+    // fetch("/api/locations", {
+    //     method: "POST",
+    //     headers: {
+    //         "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify({
+    //         name: "Berlin",
+    //         geoJSON: {
+    //             type: "Feature",
+    //             geometry: {
+    //                 type: "Point",
+    //                 coordinates: [125.6, 10.1],
+    //             },
+    //         },
+    //     }),
+    // });
 
     return (
         <div className="map-query-container">

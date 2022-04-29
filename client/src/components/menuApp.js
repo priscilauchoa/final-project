@@ -2,55 +2,26 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
+
+import { Link } from "react-router-dom";
 
 export default function MenuApp() {
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ m: 0 }}>
             <AppBar position="static">
-                <Toolbar variant="dense">
-                    <IconButton
-                        edge="start"
-                        color="inherit"
-                        aria-label="menu"
-                        sx={{ mr: 2 }}
-                    >
-                        <MenuIcon />
-                    </IconButton>
-                    <Typography
-                        sx={{ m: 0.5 }}
-                        variant="p"
-                        color="inherit"
-                        component="div"
-                    >
+                <Toolbar>
+                    <Link to="/" className="link">
                         Home
-                    </Typography>
-                    <Typography
-                        sx={{ m: 0.5 }}
-                        variant="p"
-                        color="inherit"
-                        component="div"
-                    >
-                        About
-                    </Typography>
-                    <Typography
-                        sx={{ m: 0.5 }}
-                        variant="p"
-                        color="inherit"
-                        component="div"
-                    >
+                    </Link>
+                    <Link to="/needies" className="link">
                         Help
-                    </Typography>
-                    <Typography
-                        sx={{ m: 0.5 }}
-                        variant="p"
-                        color="inherit"
-                        component="div"
-                    >
+                    </Link>
+                    <Link to="/newneedies" className="link">
+                        Register
+                    </Link>
+                    <Link to="/newneedies" className="link">
                         Contact
-                    </Typography>
+                    </Link>
                 </Toolbar>
             </AppBar>
         </Box>

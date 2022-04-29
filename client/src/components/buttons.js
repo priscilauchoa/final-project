@@ -48,21 +48,21 @@ const SubmitButton = styled(Button)({
     },
 });
 
-const CancelButton = styled(Button)(({ theme }) => ({
-    color: red[20],
-    backgroundColor: red[300],
-    "&:hover": {
-        backgroundColor: red[600],
-    },
-}));
+// const CancelButton = styled(Button)(({ theme }) => ({
+//     color: red[20],
+//     backgroundColor: red[300],
+//     "&:hover": {
+//         backgroundColor: red[600],
+//     },
+// }));
 
-export function CancelButtonModel() {
-    return (
-        <Stack spacing={2} direction="row">
-            <CancelButton variant="contained">Cancel</CancelButton>
-        </Stack>
-    );
-}
+// export function CancelButtonModel() {
+//     return (
+//         <Stack spacing={2} direction="row">
+//             <CancelButton variant="contained">Cancel</CancelButton>
+//         </Stack>
+//     );
+// }
 
 export function SubmitButtonModel() {
     return (
