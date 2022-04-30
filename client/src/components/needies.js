@@ -37,15 +37,20 @@ export function Needies() {
             neediesContainer.current.scrollHeight;
     }, []);
 
-    let img = [
-        "../img/help1.jpeg",
-        "../img/help2.jpeg",
-        "../img/help3.jpeg",
-        "../img/help4.jpeg",
-        "../img/help5.jpeg",
-        "../img/help5.jpeg",
-    ];
-    let randomImg = Math.floor(Math.random() * img.length);
+    let img = [];
+    let randomImg;
+    const randomImgFn = () => {
+        img = [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZx8JEvyygpZztx9Ltqz9l61jokRCK9Xl7mA&usqp=CAU",
+            "https://media.istockphoto.com/photos/woman-holding-cardboard-donation-box-full-with-folded-clothes-picture-id1283154274?k=20&m=1283154274&s=612x612&w=0&h=_uAhLCtvoPtQnNhGu-KfOXbaBNkFgOSpbdNhpBBPd_s=",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROb4jS87_C0h4yJyZMa-uRC16_YTLFJVxRGHklLLjAE8xn7jfZgGsHbC7m35J6gBvcZOk&usqp=CAU",
+        ];
+        randomImg = Math.floor(Math.random() * img.length);
+        return img[randomImg];
+    };
+
+    // console.log(img[randomImg]);
+    console.log(randomImgFn());
 
     return (
         <>
@@ -65,7 +70,7 @@ export function Needies() {
                                             <CardMedia
                                                 component="img"
                                                 height="140"
-                                                image={randomImg}
+                                                image={randomImgFn()}
                                             />
                                             <CardContent>
                                                 <Typography

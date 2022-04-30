@@ -3,7 +3,7 @@ import GeoSearch from "./mapBoxGeocode";
 import "mapbox-gl/dist/mapbox-gl.css";
 import MenuApp from "./components/menuApp";
 import { Needies } from "./components/needies.js";
-// import { NewNeedy } from "./components/addNeedies.js";
+import { NewNeedy } from "./components/newNeedy.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./app.css";
 
@@ -20,9 +20,9 @@ export default function App() {
                 <Route path="/needies">
                     <Needies />
                 </Route>
-                {/* <Route path="/newneedy"> */}
-                {/* <NewNeedy /> */}
-                {/* </Route> */}
+                <Route path="/newneedy">
+                    <NewNeedy />
+                </Route>
             </BrowserRouter>
         </>
     );

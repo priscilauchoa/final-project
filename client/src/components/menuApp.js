@@ -1,14 +1,18 @@
 import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-
+import { Toolbar, AppBar, makeStyles, Box } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
+const useStyles = makeStyles({
+    header: {
+        backgroundColor: "#00A3BC",
+        color: "#EF644A",
+    },
+});
 export default function MenuApp() {
+    const classes = useStyles();
     return (
         <Box sx={{ m: 0 }}>
-            <AppBar position="static">
+            <AppBar position="static" className={classes.header}>
                 <Toolbar>
                     <Link to="/" className="link">
                         Home
@@ -16,10 +20,10 @@ export default function MenuApp() {
                     <Link to="/needies" className="link">
                         Help
                     </Link>
-                    <Link to="/newneedies" className="link">
+                    <Link to="/newneedy" className="link">
                         Register
                     </Link>
-                    <Link to="/newneedies" className="link">
+                    <Link to="/contact" className="link">
                         Contact
                     </Link>
                 </Toolbar>
