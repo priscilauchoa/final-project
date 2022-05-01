@@ -23,11 +23,26 @@ app.get("/api/needies", function (req, res) {
 });
 
 app.get("/api/needies/:long/:lat", function (req, res) {
-    console.log("*******", req.params.long, req.params.lat);
+    console.log("***", req.params.long, req.params.lat);
     db.getNeediesByCoordinates(req.params.long, req.params.lat).then(
         ({ rows }) => {
             console.log("rows in data base", rows);
-            const filteredRows = rows.filter((row) => row.distance < 5000);
+            const baseDistance = 1000;
+            let distanceFactor = 1;
+            let currentDistance = baseDistance * distanceFactor;
+
+            let filteredRows = [];
+
+            while (
+                filteredRows.length === 0 &&
+                currentDistance <= 10 * baseDistance
+            ) {
+                filteredRows = rows.filter(
+                    (row) => row.distance < currentDistance
+                );
+
+                currentDistance = baseDistance * ++distanceFactor;
+            }
             console.log("filteredRows", filteredRows);
             res.json({ rows: filteredRows });
         }

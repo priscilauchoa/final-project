@@ -7,9 +7,10 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import { useDispatch, useSelector } from "react-redux";
 
 export function Needies() {
-    const [needies, setNeedies] = useState([]);
+    const needies = useSelector((state) => state.Needies && state.Needies);
     // const needies = useSelector((state) => state?.needies);
     const neediesContainer = useRef();
     // console.log("needy))))))--->", needies);

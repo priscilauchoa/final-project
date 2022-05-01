@@ -8,12 +8,17 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import Button from "@mui/material/Button";
 import ListItemText from "@mui/material/ListItemText";
-
+import { receveidNeedies } from "./redux/needies/slice.js";
+import { useDispatch } from "react-redux";
 import "./mapBoxGeocode.css";
+import { useHistory } from "react-router-dom";
+
 mapboxgl.accessToken =
     "pk.eyJ1IjoicHJpc2NpbGFmbG9yZXMiLCJhIjoiY2wyaHEyNnA0MGc5bzNjbm5ldm9zeWQwaCJ9.2wKNqQY375w7wVhbVi1PjQ";
 
 export default function GeoSearch() {
+    const history = useHistory();
+    const dispatch = useDispatch();
     const [query, setQuery] = useState("");
     const [places, setPlaces] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState();
@@ -74,6 +79,9 @@ export default function GeoSearch() {
                     console.log("needies", rows);
                     setNeedies(rows);
                     console.log("needies fetched", needies);
+                    dispatch(receveidNeedies(rows));
+
+                    history.push("/needies");
                 }
             });
     };

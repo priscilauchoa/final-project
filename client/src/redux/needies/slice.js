@@ -1,22 +1,23 @@
-// export default function NeediesReducer(needies = [], action) {
-//     if (action.type === "needies/received") {
-//         // console.log("action", action);
-//         return (needies = action.payload.reverse());
-//     } else if (action.type === "needies/new") {
-//         return (needies = [...needies, action.payload]);
-//     }
+export default function NeediesReducer(needies = [], action) {
+    if (action.type === "needies/received") {
+        console.log("action", action);
+        needies = action.payload;
+        return needies;
+        // } else if (action.type === "needies/new") {
+        //     return (needies = [...needies, action.payload]);
+    }
 
-//     return needies;
-// }
+    return needies;
+}
 
-// //______________________ACTIONS______________________________;
+//______________________ACTIONS______________________________;
 
-// export function getAllneedies(data) {
-//     return {
-//         type: "needies/received",
-//         payload: data.needies,
-//     };
-// }
+export function receveidNeedies(rows) {
+    return {
+        type: "needies/received",
+        payload: rows,
+    };
+}
 
 // export function receiveNewNeedies(needy) {
 //     console.log("needy in new messgs", needy);
