@@ -1,7 +1,13 @@
 /* color: "#EF644A"; orange*/
-
+* {
+    font-family: "Comfortaa", cursive;
+    font-family: "Montserrat", sans-serif;
+    font-family: "Orbitron", sans-serif;
+    font-family: "Quicksand", sans-serif;
+    font-family: "Roboto", sans-serif;
+}
 main {
-    height: 100vh;
+    /* height: 100vh; */
     width: 100vw;
     display: flex;
     /* justify-content: center; */
@@ -30,6 +36,21 @@ main section {
     margin: 20px;
     height: 400px;
     width: 500px;
+}
+
+.geo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    height: 126px;
+    width: 60%;
+    margin: 20px;
+}
+
+.geo-container div {
+    display: flex;
+    width: 400px;
 }
 
 .link {
@@ -64,4 +85,59 @@ main section {
 .new-needy-container input,
 div {
     margin: 5px;
+}
+
+.header-img-container {
+    background-image: url("https://mediaproxy.salon.com/width/1200/https://media.salon.com/2021/03/volunteering-face-masks-pandemic-0324211.jpg");
+    width: 100vw;
+    height: 390px;
+    margin: 0%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: opacity(65%);
+}
+.contact-img-container {
+    background-image: url("https://image.shutterstock.com/image-photo/hand-turns-dice-changes-expression-260nw-1768780358.jpg");
+    width: 100vw;
+    height: 700px;
+    margin: 0%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: opacity(65%);
+}
+
+.header-img-h1 {
+    position: absolute;
+    top: 36%;
+    left: 5%;
+    /* color: white; */
+    color: #f06125;
+    font-size: 40px;
+}
+.header-img-h1 p {
+    font-size: 20px;
+    margin: 2px 0;
+    font-weight: 200;
+}
+
+.contact-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+}
+
+.btn-contact {
+    /* margin: 17px 0px; */
+}
+
+.content-home {
+    display: flex;
+    /* width: 93%; */
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: row;
 }

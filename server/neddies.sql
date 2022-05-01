@@ -15,9 +15,11 @@ VALUES ('Berlin', 'MSF-Berlin', 'Donation', 'NGO Needs Winter Cloths', ST_GeomFr
   "type": "Point",
   "coordinates": [13.38333, 52.51667],
 }'));
-
-
-
+INSERT INTO needies (name, needy, category, description, geom)
+VALUES ('Alexander Platz', 'NGO-Animal Rescue', 'Volunteer Work', 'Rescue Animals', ST_GeomFromGeoJSON('{
+  "type": "Point",
+  "coordinates": [13.412599, 52.521534625],
+}'));
 
 
 

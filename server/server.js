@@ -22,6 +22,14 @@ app.get("/api/needies", function (req, res) {
     });
 });
 
+app.get("/api/needies/:long/:lat", function (req, res) {
+    console.log("*******", req.params.long, req.params.lat);
+    db.getNeediesByCoordinates(req.params.long, req.params.lat).then(({ rows }) => {
+        console.log("rows in data base", rows);
+        res.json({ rows });
+    });
+});
+
 app.post("/api/locations", function (req, res) {
     // const { name, lag, long } = req.body;
     console.log("body---> ", req.body);

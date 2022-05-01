@@ -15,18 +15,18 @@ export function Needies() {
     // console.log("needy))))))--->", needies);
 
     useEffect(() => {
-        fetch("/api/needies")
-            .then((res) => res.json())
-            .then(({ rows }) => {
-                console.log("data", rows);
-                if (!rows) {
-                    history.push("/");
-                } else {
-                    console.log("user", rows);
-                    setNeedies(rows);
-                    console.log("needies fetched", needies);
-                }
-            });
+        // fetch("/api/needies")
+        //     .then((res) => res.json())
+        //     .then(({ rows }) => {
+        //         console.log("data", rows);
+        //         if (!rows) {
+        //             history.push("/");
+        //         } else {
+        //             console.log("user", rows);
+        //             setNeedies(rows);
+        //             console.log("needies fetched", needies);
+        //         }
+        //     });
         //          "type": "Point",
         //   "coordinates": [10, 53.55],
         //   "needy": "NGO",

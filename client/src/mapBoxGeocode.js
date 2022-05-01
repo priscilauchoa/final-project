@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import mapboxGeocode from "@mapbox/mapbox-sdk/services/geocoding";
 import TextField from "@mui/material/TextField";
-
 import * as React from "react";
 import Box from "@mui/material/Box";
 import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
+import Button from "@mui/material/Button";
 import ListItemText from "@mui/material/ListItemText";
 
 import "./mapBoxGeocode.css";
@@ -18,12 +18,17 @@ export default function GeoSearch() {
     const [places, setPlaces] = useState([]);
     const [selectedIndex, setSelectedIndex] = useState();
     const [showList, setShowList] = useState(true);
-    const [labelInputAdress, setLabelInputAdress] = useState("");
+    const [needies, setNeedies] = useState(true);
+    const [labelInputAdress, setLabelInputAdress] = useState("Address");
+    const [longit, setLongit] = useState("");
+    const [latit, setLatit] = useState("");
 
     const handleListItemClick = (event) => {
         setSelectedIndex(event);
         setShowList(false);
-        setLabelInputAdress(places[0].text);
+        setLabelInputAdress(event.target.innerHTML);
+        setLongit(places[0].geometry.coordinates[0]);
+        setLatit(places[0].geometry.coordinates[1]);
 
         console.log("&&&&", selectedIndex);
     };
@@ -39,36 +44,6 @@ export default function GeoSearch() {
         setQuery(e.target.value);
     };
     console.log("places", places);
-    // const [placeName, setPlaceName] = useState();
-    // const [long, setLong] = useState("");
-    // const [lat, setLat] = useState("");
-    // const [type, setType] = useState("");
-    // const [typeGeometry, setTypeGeometry] = useState("");
-    // const handleClick = () => {
-    // setLong(places[0].geometry.coordinates[0]);
-    // setLat(places[0].geometry.coordinates[1]);
-    // setType(places[0].type);
-    // setTypeGeometry(places[0].geometry.type);
-    // placeName(places[0].place_name);
-
-    //     setLabelInputAdress("");
-    //     fetch("/api/locations", {
-    //         method: "POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify({
-    //             name: "Berlin",
-    //             geoJSON: {
-    //                 type: type,
-    //                 geometry: {
-    //                     type: typeGeometry,
-    //                     coordinates: [long, lat],
-    //                 },
-    //             },
-    //         }),
-    //     });
-    // };
 
     useEffect(() => {
         if (query.length < 3) return;
@@ -86,13 +61,29 @@ export default function GeoSearch() {
                 // setType(places[0].type);
             });
     }, [query]);
-
+    const handleClick = () => {
+        // console.log("*****", longit, latit);
+        fetch(`/api/needies/${longit}/${latit}`)
+            .then((res) => res.json())
+            .then(({ rows }) => {
+                console.log("data++++", rows);
+                if (!rows) {
+                    console.log("No needies in this address");
+                    history.push("/");
+                } else {
+                    console.log("needies", rows);
+                    setNeedies(rows);
+                    console.log("needies fetched", needies);
+                }
+            });
+    };
+    console.log("places", places);
     return (
-        <div>
+        <div className="geo-container">
             <div>
                 <TextField
                     id="adreess-input"
-                    label="Address"
+                    label={labelInputAdress}
                     variant="standard"
                     defaultValue={labelInputAdress}
                     onChange={handleIntputChange}
@@ -118,6 +109,7 @@ export default function GeoSearch() {
                             <ListItemButton key={place.id}>
                                 <ListItemText
                                     primary={place.place_name}
+                                    //passing place but receving
                                     onClick={(place) =>
                                         handleListItemClick(place)
                                     }
@@ -127,6 +119,35 @@ export default function GeoSearch() {
                     </List>
                 </Box>
             )}
+            <Button onClick={handleClick}> Submit</Button>
         </div>
     );
 }
+
+// const [placeName, setPlaceName] = useState();
+
+// const [type, setType] = useState("");
+// const [typeGeometry, setTypeGeometry] = useState("");
+// const handleClick = () => {
+// setType(places[0].type);
+// setTypeGeometry(places[0].geometry.type);
+// placeName(places[0].place_name);
+
+//     setLabelInputAdress("");
+//     fetch("/api/locations", {
+//         method: "POST",
+//         headers: {
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             name: "Berlin",
+//             geoJSON: {
+//                 type: type,
+//                 geometry: {
+//                     type: typeGeometry,
+//                     coordinates: [long, lat],
+//                 },
+//             },
+//         }),
+//     });
+// };

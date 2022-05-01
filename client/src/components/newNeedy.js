@@ -15,7 +15,7 @@ import {
     MenuItem,
 } from "@material-ui/core";
 
-export function NewNeedy() {
+export function NewNeedy(props) {
     const [newNeedy, setNeedy] = useState();
     const [name, setName] = useState();
     const [category, setCategory] = useState("");
@@ -55,6 +55,9 @@ export function NewNeedy() {
     console.log("placessss in new neddies ,", geoSearch);
     const handleClick = () => {
         console.log("foi clicado");
+        console.log("foi clicado", long);
+        console.log("foi clicado", lat);
+        console.log("foi clicado", type);
 
         fetch("/api/locations", {
             method: "POST",
