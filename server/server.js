@@ -27,7 +27,7 @@ app.get("/api/needies/:long/:lat", function (req, res) {
     db.getNeediesByCoordinates(req.params.long, req.params.lat).then(
         ({ rows }) => {
             console.log("rows in data base", rows);
-            const baseDistance = 1000;
+            const baseDistance = 3000;
             let distanceFactor = 1;
             let currentDistance = baseDistance * distanceFactor;
 

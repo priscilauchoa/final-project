@@ -38,25 +38,25 @@ export function Needies() {
             neediesContainer.current.scrollHeight;
     }, []);
 
-    let img = [];
-    let randomImg;
-    const randomImgFn = () => {
-        img = [
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZx8JEvyygpZztx9Ltqz9l61jokRCK9Xl7mA&usqp=CAU",
-            "https://media.istockphoto.com/photos/woman-holding-cardboard-donation-box-full-with-folded-clothes-picture-id1283154274?k=20&m=1283154274&s=612x612&w=0&h=_uAhLCtvoPtQnNhGu-KfOXbaBNkFgOSpbdNhpBBPd_s=",
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROb4jS87_C0h4yJyZMa-uRC16_YTLFJVxRGHklLLjAE8xn7jfZgGsHbC7m35J6gBvcZOk&usqp=CAU",
-        ];
-        randomImg = Math.floor(Math.random() * img.length);
-        return img[randomImg];
-    };
+    // let img = [];
+    // let randomImg;
+    // const randomImgFn = () => {
+    //     img = [
+    //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZx8JEvyygpZztx9Ltqz9l61jokRCK9Xl7mA&usqp=CAU",
+    //         "https://media.istockphoto.com/photos/woman-holding-cardboard-donation-box-full-with-folded-clothes-picture-id1283154274?k=20&m=1283154274&s=612x612&w=0&h=_uAhLCtvoPtQnNhGu-KfOXbaBNkFgOSpbdNhpBBPd_s=",
+    //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROb4jS87_C0h4yJyZMa-uRC16_YTLFJVxRGHklLLjAE8xn7jfZgGsHbC7m35J6gBvcZOk&usqp=CAU",
+    //     ];
+    //     randomImg = Math.floor(Math.random() * img.length);
+    //     return img[randomImg];
+    // };
 
     // console.log(img[randomImg]);
-    console.log(randomImgFn());
+    // console.log(randomImgFn());
 
     return (
         <>
             <section>
-                <h1>Needies</h1>
+                <h1>Results: </h1>
                 <section ref={neediesContainer} className="needies-container">
                     <div className="needies-container">
                         {needies.length > 0 &&
@@ -65,13 +65,14 @@ export function Needies() {
                                     <div className="needies" key={needy.id}>
                                         <Card
                                             sx={{
-                                                maxWidth: 345,
+                                                width: "258px",
+                                                height: "270px",
                                             }}
                                         >
                                             <CardMedia
                                                 component="img"
-                                                height="140"
-                                                image={randomImgFn()}
+                                                height="100"
+                                                image={needy.img}
                                             />
                                             <CardContent>
                                                 <Typography
@@ -99,7 +100,7 @@ export function Needies() {
                                                     Share
                                                 </Button>
                                                 <Button size="small">
-                                                    Learn More
+                                                    Help
                                                 </Button>
                                             </CardActions>
                                             <Typography>
@@ -107,13 +108,10 @@ export function Needies() {
                                             </Typography>
                                         </Card>
 
-                                        <p>
-                                            {/* {needy.first} {needy.last}:{"  "} */}
-                                        </p>
+                                        <p></p>
                                     </div>
                                 );
                             })}
-                        {/* <h1>NO NEEDIES</h1> */}
                     </div>
                 </section>
             </section>
