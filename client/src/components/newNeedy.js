@@ -34,14 +34,14 @@ export function NewNeedy(props) {
         setCategory(event.target.value);
     };
 
-    const handleChangeGeo = (event) => {
-        console.log("event geo((((", event);
-        setCategory(event.target.value);
-        setLong(event.places[0].geometry.coordinates[0]);
-        setLat(event.places[0].geometry.coordinates[1]);
-        setType(event.places[0].type);
-        setTypeGeometry(event.places[0].geometry.type);
-        setPlaceName(event.places[0].place_name);
+    const handleChangeGeo = (place) => {
+        console.log("event geo((((", place);
+        setCategory(place.place_name);
+        setLong(place.geometry.coordinates[0]);
+        setLat(place.geometry.coordinates[1]);
+        setType(place.type);
+        setTypeGeometry(place.geometry.type);
+        setPlaceName(place.place_name);
     };
 
     const [placeName, setPlaceName] = useState();
@@ -77,8 +77,14 @@ export function NewNeedy(props) {
         });
     };
 
+    const handleSelectItem = (place) => {
+        console.log('### register place', place);
+        handleChangeGeo(place);
+    };
+
     return (
         <>
+            <GeoSearch onItemSelected={handleSelectItem} />
             <section className="new-needy-container">
                 <Typography variant="h5">Register</Typography>
 
@@ -104,11 +110,6 @@ export function NewNeedy(props) {
                     variant="standard"
                     onChange={(event) => {
                         setDescription(event.target.value);
-                    }}
-                />
-                <GeoSearch
-                    onChange={(event) => {
-                        handleChangeGeo(event.target);
                     }}
                 />
                 <Box sx={{ minWidth: 120 }}>

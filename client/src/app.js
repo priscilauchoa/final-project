@@ -17,12 +17,10 @@ export default function App() {
                 <MenuApp />
                 <Route exact path="/">
                     <Header />
-                    <GeoSearch />
                     <ContentHome />
                 </Route>
                 <Route path="/needies">
                     <Header />
-                    <GeoSearch />
                     <Needies />
                 </Route>
                 <Route path="/contact">

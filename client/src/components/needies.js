@@ -8,8 +8,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
+import GeoSearch from "../mapBoxGeocode";
+import useFetchNeedies from "../hooks/useFetchNeedies";
 
 export function Needies() {
+    const { handleSelectItem, handleSubmitClick } = useFetchNeedies();
     const needies = useSelector((state) => state.Needies && state.Needies);
     // const needies = useSelector((state) => state?.needies);
     const neediesContainer = useRef();
@@ -55,6 +58,8 @@ export function Needies() {
 
     return (
         <>
+            <GeoSearch onItemSelected={handleSelectItem} />
+            <Button onClick={handleSubmitClick}>Search</Button>
             <section>
                 <h1>Results: </h1>
                 <section ref={neediesContainer} className="needies-container">
