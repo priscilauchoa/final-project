@@ -24,10 +24,14 @@ app.get("/api/needies", function (req, res) {
 
 app.get("/api/needies/:long/:lat", function (req, res) {
     console.log("*******", req.params.long, req.params.lat);
-    db.getNeediesByCoordinates(req.params.long, req.params.lat).then(({ rows }) => {
-        console.log("rows in data base", rows);
-        res.json({ rows });
-    });
+    db.getNeediesByCoordinates(req.params.long, req.params.lat).then(
+        ({ rows }) => {
+            console.log("rows in data base", rows);
+            const filteredRows = rows.filter((row) => row.distance < 5000);
+            console.log("filteredRows", filteredRows);
+            res.json({ rows: filteredRows });
+        }
+    );
 });
 
 app.post("/api/locations", function (req, res) {

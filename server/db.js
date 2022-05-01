@@ -21,7 +21,7 @@ ORDER BY distance ASC;`,
     );
 };
 
-// SELECT * FROM needies WHERE GeometryType(ST_Centroid(the_geom)) = 'POINT' AND ST_Distance_Sphere( ST_Point(ST_X(ST_Centroid(the_geom)), ST_Y(ST_Centroid(the_geom))), (ST_MakePoint(13.412599) , 52.521534625))) <= 18 * 1609,34
+// SELECT * FROM needies WHERE GeometryType(ST_Centroid(geom)) = 'POINT' AND ST_Distance_Sphere( ST_Point(ST_X(ST_Centroid(geom)), ST_Y(ST_Centroid(geom))), (ST_MakePoint(13.412599) , 52.521534625))) <= 18 * 1609,34
 
 // SELECT *
 // FROM needies
