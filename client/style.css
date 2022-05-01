@@ -38,21 +38,6 @@ main section {
     width: 500px;
 }
 
-.geo-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    align-content: center;
-    height: 126px;
-    width: 60%;
-    margin: 20px;
-}
-
-.geo-container div {
-    display: flex;
-    width: 400px;
-}
-
 .link {
     color: white;
     text-decoration: none;
@@ -61,6 +46,16 @@ main section {
 
 .img-needies {
     height: 100%;
+}
+
+.list-places {
+    list-style: none;
+}
+ul {
+    position: absolute;
+    background-color: #f7f9fa;
+    margin: 0;
+    padding: 5px;
 }
 
 .needies-container {
