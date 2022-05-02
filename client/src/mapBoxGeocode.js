@@ -19,7 +19,7 @@ export default function GeoSearch({ onItemSelected }) {
     const [places, setPlaces] = useState([]);
     const [showList, setShowList] = useState(false);
 
-    console.log('### onItemSelected', onItemSelected);
+    // console.log('### onItemSelected', onItemSelected);
 
     const handleListItemClick = (place) => {
         setShowList(false);

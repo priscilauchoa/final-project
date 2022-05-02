@@ -7,7 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import GeoSearch from "../mapBoxGeocode";
-import {receveidNeedies} from "../redux/needies/slice";
+// import { receveidNeedies } from "../redux/needies-list/slice";
 import useFetchNeedies from "../hooks/useFetchNeedies";
 
 export default function ContentHome() {
@@ -15,8 +15,10 @@ export default function ContentHome() {
 
     return (
         <>
-            <GeoSearch onItemSelected={handleSelectItem} />
-            <Button onClick={handleSubmitClick}>Search</Button>
+            <div className="container-geo">
+                <GeoSearch onItemSelected={handleSelectItem} />
+                <Button onClick={handleSubmitClick}>Search</Button>
+            </div>
             <section className="content-home">
                 <Card sx={{ width: 250, height: 370 }}>
                     <CardMedia
@@ -27,12 +29,12 @@ export default function ContentHome() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                        Volunteer Work
+                            Volunteer Work
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                        Long story short: endless possibilities! There's no
-                        excuse in Berlin for not finding the matching volunteer
-                        work for you.
+                            Long story short: endless possibilities! There's no
+                            excuse in Berlin for not finding the matching
+                            volunteer work for you.
                         </Typography>
                     </CardContent>
                     <CardActions>
@@ -49,12 +51,12 @@ export default function ContentHome() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                        Volunteer Work
+                            Volunteer Work
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                        Long story short: endless possibilities! There's no
-                        excuse in Berlin for not finding the matching volunteer
-                        work for you.
+                            Long story short: endless possibilities! There's no
+                            excuse in Berlin for not finding the matching
+                            volunteer work for you.
                         </Typography>
                     </CardContent>
                     <CardActions>
@@ -71,12 +73,12 @@ export default function ContentHome() {
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                        Volunteer Work
+                            Volunteer Work
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                        Long story short: endless possibilities! There's no
-                        excuse in Berlin for not finding the matching volunteer
-                        work for you.
+                            Long story short: endless possibilities! There's no
+                            excuse in Berlin for not finding the matching
+                            volunteer work for you.
                         </Typography>
                     </CardContent>
                     <CardActions>

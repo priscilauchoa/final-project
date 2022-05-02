@@ -17,7 +17,7 @@ export default function MenuApp() {
                     <Link to="/" className="link">
                         Home
                     </Link>
-                    <Link to="/needies" className="link">
+                    <Link to="/" className="link">
                         Help
                     </Link>
                     <Link to="/newneedy" className="link">

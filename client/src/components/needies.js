@@ -10,8 +10,13 @@ import Typography from "@mui/material/Typography";
 import { useDispatch, useSelector } from "react-redux";
 import GeoSearch from "../mapBoxGeocode";
 import useFetchNeedies from "../hooks/useFetchNeedies";
+import { useHistory } from "react-router-dom";
+import { receveidNeedy } from "../redux/needy/slice.js";
 
 export function Needies() {
+    const history = useHistory();
+    const dispatch = useDispatch();
+
     const { handleSelectItem, handleSubmitClick } = useFetchNeedies();
     const needies = useSelector((state) => state.Needies && state.Needies);
     // const needies = useSelector((state) => state?.needies);
@@ -19,49 +24,27 @@ export function Needies() {
     // console.log("needy))))))--->", needies);
 
     useEffect(() => {
-        // fetch("/api/needies")
-        //     .then((res) => res.json())
-        //     .then(({ rows }) => {
-        //         console.log("data", rows);
-        //         if (!rows) {
-        //             history.push("/");
-        //         } else {
-        //             console.log("user", rows);
-        //             setNeedies(rows);
-        //             console.log("needies fetched", needies);
-        //         }
-        //     });
-        //          "type": "Point",
-        //   "coordinates": [10, 53.55],
-        //   "needy": "NGO",
-        //   "category": "Donation",
-        //   "description": "NGO Needs Winter Cloths",
-
         neediesContainer.current.scrollTop =
             neediesContainer.current.scrollHeight;
     }, []);
 
-    // let img = [];
-    // let randomImg;
-    // const randomImgFn = () => {
-    //     img = [
-    //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZx8JEvyygpZztx9Ltqz9l61jokRCK9Xl7mA&usqp=CAU",
-    //         "https://media.istockphoto.com/photos/woman-holding-cardboard-donation-box-full-with-folded-clothes-picture-id1283154274?k=20&m=1283154274&s=612x612&w=0&h=_uAhLCtvoPtQnNhGu-KfOXbaBNkFgOSpbdNhpBBPd_s=",
-    //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROb4jS87_C0h4yJyZMa-uRC16_YTLFJVxRGHklLLjAE8xn7jfZgGsHbC7m35J6gBvcZOk&usqp=CAU",
-    //     ];
-    //     randomImg = Math.floor(Math.random() * img.length);
-    //     return img[randomImg];
-    // };
+    const handleHelpClick = (needy) => {
+        console.log("NEEDY****", needy);
+        dispatch(receveidNeedy(needy));
 
-    // console.log(img[randomImg]);
-    // console.log(randomImgFn());
+        history.push("/needy");
+    };
 
     return (
         <>
-            <GeoSearch onItemSelected={handleSelectItem} />
-            <Button onClick={handleSubmitClick}>Search</Button>
+            <div className="container-search">
+                <h3>Search by location of interest: </h3>
+                <div>
+                    <GeoSearch onItemSelected={handleSelectItem} />
+                    <Button onClick={handleSubmitClick}>Search</Button>
+                </div>
+            </div>
             <section>
-                <h1>Results: </h1>
                 <section ref={neediesContainer} className="needies-container">
                     <div className="needies-container">
                         {needies.length > 0 &&
@@ -71,7 +54,7 @@ export function Needies() {
                                         <Card
                                             sx={{
                                                 width: "258px",
-                                                height: "270px",
+                                                height: "302px",
                                             }}
                                         >
                                             <CardMedia
@@ -104,7 +87,12 @@ export function Needies() {
                                                 <Button size="small">
                                                     Share
                                                 </Button>
-                                                <Button size="small">
+                                                <Button
+                                                    onClick={() => {
+                                                        handleHelpClick(needy);
+                                                    }}
+                                                    size="small"
+                                                >
                                                     Help
                                                 </Button>
                                             </CardActions>

@@ -6,6 +6,7 @@ import Header from "./components/header.js";
 import Contact from "./components/contact.js";
 import ContentHome from "./components/content-home.js";
 import { Needies } from "./components/needies.js";
+import { Needy } from "./components/needy";
 import { NewNeedy } from "./components/newNeedy.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./app.css";
@@ -22,6 +23,9 @@ export default function App() {
                 <Route path="/needies">
                     <Header />
                     <Needies />
+                </Route>
+                <Route path="/needy">
+                    <Needy />
                 </Route>
                 <Route path="/contact">
                     <Contact />

@@ -1,14 +1,15 @@
-import {useCallback, useMemo, useState} from "react";
-import {useDispatch} from "react-redux";
-import {receveidNeedies} from "../redux/needies/slice";
+import { useCallback, useMemo, useState } from "react";
+import { useDispatch } from "react-redux";
+import { receveidNeedies } from "../redux/needies-list/slice.js";
+import { useHistory } from "react-router-dom";
 
 export default function useFetchNeedies() {
     const dispatch = useDispatch();
     const [longit, setLongit] = useState("");
     const [latit, setLatit] = useState("");
-
+    const history = useHistory();
     const handleSelectItem = useCallback((place) => {
-        console.log('### hook place', place);
+        // console.log("### hook place", place);
         setLongit(place.geometry.coordinates[0]);
         setLatit(place.geometry.coordinates[1]);
     }, []);
@@ -29,8 +30,11 @@ export default function useFetchNeedies() {
             });
     }, [latit, longit]);
 
-    return useMemo(() => ({
-        handleSelectItem,
-        handleSubmitClick
-    }), [handleSelectItem, handleSubmitClick]);
+    return useMemo(
+        () => ({
+            handleSelectItem,
+            handleSubmitClick,
+        }),
+        [handleSelectItem, handleSubmitClick]
+    );
 }

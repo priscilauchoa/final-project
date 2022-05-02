@@ -8,12 +8,12 @@ app.use(compression());
 
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 
-app.get("/locations", function (req, res) {
-    db.getLocations().then(({ rows }) => {
-        console.log("rows in data base", rows);
-        res.json({ rows });
-    });
-});
+// app.get("/locations", function (req, res) {
+//     db.getLocations().then(({ rows }) => {
+//         console.log("rows in data base", rows);
+//         res.json({ rows });
+//     });
+// });
 
 app.get("/api/needies", function (req, res) {
     db.getNeedies().then(({ rows }) => {

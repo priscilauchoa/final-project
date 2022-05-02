@@ -78,13 +78,12 @@ export function NewNeedy(props) {
     };
 
     const handleSelectItem = (place) => {
-        console.log('### register place', place);
+        // console.log('### register place', place);
         handleChangeGeo(place);
     };
 
     return (
         <>
-            <GeoSearch onItemSelected={handleSelectItem} />
             <section className="new-needy-container">
                 <Typography variant="h5">Register</Typography>
 
@@ -112,6 +111,8 @@ export function NewNeedy(props) {
                         setDescription(event.target.value);
                     }}
                 />
+                <GeoSearch onItemSelected={handleSelectItem} />
+
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">
