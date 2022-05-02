@@ -92,9 +92,9 @@ export function NewNeedy(props) {
                     },
                 },
             }),
-        }).then((newRegister) => {
-            console.log("newRegisters", newRegister);
-            setId(newRegister[0].id);
+        }).then(({ newRegister }) => {
+            console.log("newRegisters", newRegister.id);
+            setId(newRegister.id);
         });
     };
 

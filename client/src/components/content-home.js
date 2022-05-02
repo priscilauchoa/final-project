@@ -27,6 +27,9 @@ export default function ContentHome() {
                         image="https://blog.govolunteer.com/wp-content/uploads/2020/01/Copy-of-02_BLOG_Featured-Image-6-1-500x383.jpg"
                         alt="volunteer work"
                     />
+                    <Typography gutterBottom variant="h4" component="div">
+                        Causes
+                    </Typography>
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             Volunteer Work
@@ -46,17 +49,17 @@ export default function ContentHome() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image="https://blog.govolunteer.com/wp-content/uploads/2020/01/Copy-of-02_BLOG_Featured-Image-6-1-500x383.jpg"
-                        alt="volunteer work"
+                        image="https://www.hamburg.com/image/11823838/16x9/990/557/fc2ee6d9dadaacf91ccafca2587404b7/mQ/km1-clothing-donation-centre.jpg
+                    "
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Volunteer Work
+                            Donation
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Long story short: endless possibilities! There's no
-                            excuse in Berlin for not finding the matching
-                            volunteer work for you.
+                            This year, on top of everything else, there’s a
+                            pandemic to contend with. Staying home isn’t an
+                            option if you don’t have one. .
                         </Typography>
                     </CardContent>
                     <CardActions>
@@ -68,17 +71,17 @@ export default function ContentHome() {
                     <CardMedia
                         component="img"
                         height="140"
-                        image="https://blog.govolunteer.com/wp-content/uploads/2020/01/Copy-of-02_BLOG_Featured-Image-6-1-500x383.jpg"
-                        alt="volunteer work"
+                        image="https://scd.infomigrants.net/media/resize/my_image_big/63a05c8955c1c843762a95120d2f57f2881af868.jpeg"
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
-                            Volunteer Work
+                            Social Advice
                         </Typography>
                         <Typography variant="body2" color="text.secondary">
-                            Long story short: endless possibilities! There's no
-                            excuse in Berlin for not finding the matching
-                            volunteer work for you.
+                            There are a number of agencies that provide support
+                            and advice to people from other countries
+                            (immigrants, migrants, refugees and asylum seekers).
+                            .
                         </Typography>
                     </CardContent>
                     <CardActions>
