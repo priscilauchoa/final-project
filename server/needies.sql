@@ -3,14 +3,13 @@ DROP TABLE IF EXISTS needies;
 
 CREATE TABLE needies (
   id SERIAL PRIMARY KEY,
-  name VARCHAR(255) NOT NULL,
+  name VARCHAR(255),
   geom geometry,
-  needy VARCHAR(255) NOT NULL, 
-  category VARCHAR(255) NOT NULL,
-  description VARCHAR(255) NOT NULL,
+  needy VARCHAR(255), 
+  category VARCHAR(255),
+  description VARCHAR(255),
   img TEXT
 );
-
 
 
 INSERT INTO needies (name, needy, category, description,img, geom)

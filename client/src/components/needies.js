@@ -54,12 +54,13 @@ export function Needies() {
                                         <Card
                                             sx={{
                                                 width: "258px",
-                                                height: "302px",
+                                                height: "320px",
+                                                paddingBottom: "10px",
                                             }}
                                         >
                                             <CardMedia
                                                 component="img"
-                                                height="100"
+                                                height="130"
                                                 image={needy.img}
                                             />
                                             <CardContent>

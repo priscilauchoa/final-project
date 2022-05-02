@@ -7,7 +7,7 @@ import Contact from "./components/contact.js";
 import ContentHome from "./components/content-home.js";
 import { Needies } from "./components/needies.js";
 import { Needy } from "./components/needy";
-import { NewNeedy } from "./components/newNeedy.js";
+import { NewNeedy } from "./components/register.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./app.css";
 

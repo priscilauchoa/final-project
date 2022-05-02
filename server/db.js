@@ -21,30 +21,31 @@ ORDER BY distance ASC;`,
     );
 };
 
-// SELECT * FROM needies WHERE GeometryType(ST_Centroid(geom)) = 'POINT' AND ST_Distance_Sphere( ST_Point(ST_X(ST_Centroid(geom)), ST_Y(ST_Centroid(geom))), (ST_MakePoint(13.412599) , 52.521534625))) <= 18 * 1609,34
+exports.changeImg = (id, img) => {
+    return db.query(
+        `UPDATE needies
+SET img = $2
+WHERE needies.id = $1 RETURNING img AS url`,
+        [id, img]
+    );
+};
 
-// SELECT *
-// FROM needies
-// WHERE ST_Distance_Sphere(geom, ST_MakePoint(13.412599, 52.521534625)) <= radius_mi * 1609.34`;
+async function createNewRegister({
+    name,
+    category,
+    description,
+    img,
+    geoJSON,
+}) {
+    let newGeoJSON = JSON.stringify(geoJSON.geometry);
+    console.log("newGeoJSON", newGeoJSON);
+    const result = await db.query(
+        `INSERT INTO needies (name, category, description, img, geom) 
+        VALUES($1, $2, $3, $4, ($5)::geometry) 
+        RETURNING id`,
+        [name, category, description, img, newGeoJSON]
+    );
+    return result.rows[0];
+}
 
-// exports.insertLocation = () => {
-//     return db.query(
-//         `INSERT INTO places (name, geom)
-// VALUES ('Berlin', ST_GeomFromGeoJSON('{
-//   "type": "Point",
-//   "coordinates": [13.38333, 52.51667]
-// }')),
-// ('Leipzig', ST_GeomFromGeoJSON('{
-//   "type": "Point",
-//   "coordinates": [12.374464, 51.336109]
-// }'));`
-//     );
-// };
-
-// exports.getLocations = () => {
-//     return db.query(
-//         `SELECT name, ST_Distance(ST_MakePoint(13.383309, 52.516806)::geography, geom)
-// AS distance
-// FROM needies;`
-//     );
-// };
+module.exports.createNewRegister = createNewRegister;

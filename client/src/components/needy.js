@@ -20,8 +20,8 @@ export function Needy() {
 
     return (
         <>
-            <h1> Contact us to help </h1>
             {/* <section ref={needyContainer} className="needy-container"> */}
+            <h1 id="needy"> Contact us to help </h1>
             <section id="needy">
                 <div>
                     <img className="img-needy" src={needy.img}></img>

@@ -14,10 +14,10 @@ main {
     /* justify-content: center; */
     flex-direction: column;
 }
-.needy {
+#needy {
     display: flex;
     width: 100%;
-    
+    justify-content: space-around;
 }
 
 .text-area-needy {
@@ -137,7 +137,11 @@ ul {
 
 .new-needy-container {
     display: flex;
-    height: 800px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 804px;
 }
 
 .new-needy-container input,
