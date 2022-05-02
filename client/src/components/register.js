@@ -1,11 +1,14 @@
 // import { useSelector } from "react-redux";
 import { useRef, useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 // import * as React from "react";
 import GeoSearch from "../mapBoxGeocode";
 import * as React from "react";
 import Button from "@mui/material/Button";
 import SavePicture from "./save-picture";
 import Box from "@mui/material/Box";
+
+import { receveidNewNeedies } from "../redux/needies-list/slice.js";
 import Modal from "@mui/material/Modal";
 import {
     TextField,
@@ -30,7 +33,9 @@ const style = {
     pb: 3,
 };
 
-export function NewNeedy(props) {
+export function Register(props) {
+    const dispatch = useDispatch();
+
     const [newNeedy, setNewNeedy] = useState();
     const [name, setName] = useState();
     const [category, setCategory] = useState("");
@@ -57,7 +62,7 @@ export function NewNeedy(props) {
         setLat(place.geometry.coordinates[1]);
         setType(place.type);
         setTypeGeometry(place.geometry.type);
-        setPlaceName(place.place_name);
+        setName(place.place_name);
     };
 
     const handleChange = (event) => {
@@ -81,7 +86,8 @@ export function NewNeedy(props) {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                needy: newNeedy,
+                name: name,
+                needy: placeName,
                 category: category,
                 description: description,
                 geoJSON: {
@@ -93,7 +99,8 @@ export function NewNeedy(props) {
                 },
             }),
         }).then(({ newRegister }) => {
-            console.log("newRegisters", newRegister.id);
+            // console.log("newRegisters")
+            dispatch(receveidNewNeedies(newRegister));
             setId(newRegister.id);
         });
     };
@@ -117,7 +124,7 @@ export function NewNeedy(props) {
                     label="Name"
                     variant="standard"
                     onChange={(event) => {
-                        setName(event.target.value);
+                        setPlaceName(event.target.value);
                     }}
                 />
                 <TextField

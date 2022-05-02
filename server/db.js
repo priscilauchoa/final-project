@@ -32,18 +32,30 @@ WHERE needies.id = $1 RETURNING img AS url`,
 
 async function createNewRegister({
     name,
+    needy,
+
     category,
     description,
     img,
     geoJSON,
 }) {
+    console.log(
+        "data######",
+        name,
+        needy,
+
+        category,
+        description,
+        img,
+        geoJSON
+    );
     let newGeoJSON = JSON.stringify(geoJSON.geometry);
     console.log("newGeoJSON", newGeoJSON);
     const result = await db.query(
-        `INSERT INTO needies (name, category, description, img, geom) 
-        VALUES($1, $2, $3, $4, ($5)::geometry) 
-        RETURNING id`,
-        [name, category, description, img, newGeoJSON]
+        `INSERT INTO needies (name, needy, category, description, img, geom) 
+        VALUES($1, $2, $3, $4, $5, ($6)::geometry) 
+        RETURNING *`,
+        [name, needy, category, description, img, newGeoJSON]
     );
     return result.rows[0];
 }

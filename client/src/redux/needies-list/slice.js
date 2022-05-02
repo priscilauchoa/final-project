@@ -3,8 +3,8 @@ export default function NeediesReducer(needies = [], action) {
         console.log("action", action);
         needies = action.payload;
         return needies;
-        // } else if (action.type === "needies/new") {
-        //     return (needies = [...needies, action.payload]);
+    } else if (action.type === "needies/new") {
+        return (needies = [...needies, action.payload]);
     }
 
     return needies;
@@ -19,10 +19,10 @@ export function receveidNeedies(rows) {
     };
 }
 
-// export function receiveNewNeedies(needy) {
-//     console.log("needy in new messgs", needy);
-//     return {
-//         type: "needies/new",
-//         payload: needy,
-//     };
-// }
+export function receveidNewNeedies(needy) {
+    console.log("needy in new messgs", needy);
+    return {
+        type: "needies/new",
+        payload: needy,
+    };
+}

@@ -11,7 +11,7 @@ import { useDispatch, useSelector } from "react-redux";
 import GeoSearch from "../mapBoxGeocode";
 import useFetchNeedies from "../hooks/useFetchNeedies";
 import { useHistory } from "react-router-dom";
-import { receveidNeedy } from "../redux/needy/slice.js";
+import { receveidNeedy } from "../redux/help/slice.js";
 
 export function Needies() {
     const history = useHistory();

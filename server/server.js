@@ -22,39 +22,7 @@ app.post("/api/register", async (req, res) => {
     }
 });
 
-// app.post("/api/register", function (req, res) {
-//     // console.log("req body &&&&&", req.body);
 
-//     const [
-//         needy,
-//         category,
-//         description,
-//         // img,
-//         geoJSON,
-//     ] = req.body;
-//     console.log(
-//         "req.body register-->",
-//         needy,
-//         category,
-//         description,
-//         // img,
-//         geoJSON
-//     );
-//     // db.insertNeedy(
-//     //     needy,
-//     //     category,
-//     //     description,
-//     //     // img,
-//     //     type,
-//     //     long,
-//     //     lat
-//     // ).then(({ rows }) => {
-//     //     console.log("rows in insertNeedydata ", rows);
-//     //     // res.json({ rows });
-//     // });
-// });
-
-// name, needy, category, description, img, type, geom;
 app.get("/api/needies", function (req, res) {
     db.getNeedies().then(({ rows }) => {
         console.log("rows in data base", rows);

@@ -7,7 +7,7 @@ import Contact from "./components/contact.js";
 import ContentHome from "./components/content-home.js";
 import { Needies } from "./components/needies.js";
 import { Needy } from "./components/needy";
-import { NewNeedy } from "./components/register.js";
+import { Register } from "./components/register.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./app.css";
 
@@ -30,8 +30,8 @@ export default function App() {
                 <Route path="/contact">
                     <Contact />
                 </Route>
-                <Route path="/newneedy">
-                    <NewNeedy />
+                <Route path="/register">
+                    <Register />
                 </Route>
             </BrowserRouter>
         </>

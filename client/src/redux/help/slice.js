@@ -1,4 +1,4 @@
-export default function NeedyReducer(needy = [], action) {
+export default function Help(needy = [], action) {
     if (action.type === "needy/received") {
         console.log("action", action);
         needy = action.payload;

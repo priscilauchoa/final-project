@@ -20,7 +20,7 @@ export default function MenuApp() {
                     <Link to="/" className="link">
                         Help
                     </Link>
-                    <Link to="/newneedy" className="link">
+                    <Link to="/register" className="link">
                         Register
                     </Link>
                     <Link to="/contact" className="link">
