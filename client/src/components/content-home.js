@@ -29,9 +29,17 @@ export default function ContentHome() {
 
     return (
         <>
+            
+
             <div className="container-geo">
                 <GeoSearch onItemSelected={handleSelectItem} />
-                <Button onClick={handleSubmitClick}>Search</Button>
+                <Button
+                    style={{ height: "35px", margin: "44px 0 0 0" }}
+                    variant="outlined"
+                    onClick={handleSubmitClick}
+                >
+                    Search
+                </Button>
             </div>
             <Map />
 

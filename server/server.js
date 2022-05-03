@@ -14,7 +14,7 @@ app.use(express.json());
 app.post("/api/register", async (req, res) => {
     try {
         const newRegister = await db.createNewRegister(req.body);
-        console.log("newRegister-->", newRegister);
+        // console.log("newRegister-->", newRegister);
         res.json(newRegister);
     } catch (error) {
         console.log("[/api/register] error saving place", error, req.body);
@@ -24,11 +24,11 @@ app.post("/api/register", async (req, res) => {
 
 app.post("/upload/:id", uploader.single("file"), s3.upload, (req, res) => {
     let url = `https://s3.amazonaws.com/priscilasbucket/${req.file.filename}`;
-    console.log("ID in the server--->", req.session.id);
-    db.changeImg(req.session.id, url)
+    console.log("ID in the server--->", req.params.id);
+    db.changeImg(req.params.id, url)
         .then(({ rows }) => {
             console.log("rows****", rows);
-            res.json(rows);
+            res.json({ success: true });
         })
         .catch((err) => {
             console.log("error verify code secret", err);
@@ -47,7 +47,7 @@ app.get("/api/needies/:long/:lat", function (req, res) {
     // console.log("***", req.params.long, req.params.lat);
     db.getNeediesByCoordinates(req.params.long, req.params.lat).then(
         ({ rows }) => {
-            console.log("rows in data base", rows);
+            // console.log("rows in data base", rows);
             const baseDistance = 3000;
             let distanceFactor = 1;
             let currentDistance = baseDistance * distanceFactor;
@@ -64,7 +64,7 @@ app.get("/api/needies/:long/:lat", function (req, res) {
 
                 currentDistance = baseDistance * ++distanceFactor;
             }
-            console.log("filteredRows", filteredRows);
+            // console.log("filteredRows", filteredRows);
             res.json({ rows: filteredRows });
         }
     );
@@ -72,7 +72,7 @@ app.get("/api/needies/:long/:lat", function (req, res) {
 
 app.post("/api/locations", function (req, res) {
     // const { name, lag, long } = req.body;
-    console.log("body---> ", req.body);
+    // console.log("body---> ", req.body);
     // db.insertLocation(name, lag, long).then(({ rows }) => {
     //     console.log("rows in data base", rows);
     //     res.json({ rows });

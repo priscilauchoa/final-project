@@ -39,11 +39,11 @@ export function Needies() {
     return (
         <>
             <div className="container-search">
-                <h3>Search by location of interest: </h3>
+                
                 <div>
                     <GeoSearch onItemSelected={handleSelectItem} />
-                    <Button onClick={handleSubmitClick}>Search</Button>
                 </div>
+                <Button onClick={handleSubmitClick}>Search</Button>
             </div>
             <section>
                 <section ref={neediesContainer} className="needies-container">

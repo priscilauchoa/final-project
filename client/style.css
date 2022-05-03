@@ -107,17 +107,33 @@ ul {
     top: 100px;
     display: flex;
     width: 400px;
+    top: 46px;
 }
 
-.container-geo,
+.thanks {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: 3% 30%;
+}
+
+.thanks p {
+    width: 30px;
+}
+
+.container-geo {
+    display: flex;
+}
 .container-search {
     display: flex;
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    align-items: center;
+    justify-content: center;
 }
-.container-search div {
-    display: flex;
+
+.btn-geo {
+    height: 35px;
+    margin: 44px 0 0 0;
 }
 
 .needy-container {
@@ -141,7 +157,7 @@ ul {
     justify-content: center;
     align-items: center;
     align-content: center;
-    height: 804px;
+    height: 557px;
 }
 
 .new-needy-container input,
@@ -150,11 +166,11 @@ div {
 }
 
 .header-img-container {
-    background-image: url("https://mediaproxy.salon.com/width/1200/https://media.salon.com/2021/03/volunteering-face-masks-pandemic-0324211.jpg");
+    background-image: url("https://www.gofundme.com/en-gb/c/wp-content/uploads/sites/11/2021/06/Gift-aid-and-charity-fundraising-1.jpg");
     width: 100vw;
     height: 390px;
     margin: 0%;
-    background-position: center;
+    background-position: inherit;
     background-size: cover;
     background-repeat: no-repeat;
     filter: opacity(65%);
@@ -175,7 +191,7 @@ div {
     justify-content: space-evenly;
     align-items: center;
     align-content: center;
-    height: 757px;
+    height: 557px;
 }
 
 .img-about {
@@ -185,7 +201,7 @@ div {
 .header-img-h1 {
     position: absolute;
     top: 30%;
-    left: 5%;
+    right: 5%;
     /* color: white; */
     color: #f06125;
     font-size: 40px;

@@ -15,6 +15,7 @@ export default function Contact() {
                     Contact us
                 </Typography>
                 <TextField
+                    style={{ width: "300px" }}
                     id="adreess-input"
                     label="First Name"
                     variant="standard"
@@ -23,6 +24,7 @@ export default function Contact() {
                     // }}
                 />
                 <TextField
+                    style={{ width: "300px" }}
                     id="adreess-input"
                     label="Last Name"
                     variant="standard"
@@ -31,6 +33,7 @@ export default function Contact() {
                     // }}
                 />
                 <TextField
+                    style={{ width: "300px" }}
                     id="adreess-input"
                     label="Description"
                     variant="standard"
@@ -40,6 +43,7 @@ export default function Contact() {
                 />
                 <div className="btn-contact">
                     <Button
+                        style={{ margin: "10px 0" }}
                         // onClick={handleClick}
 
                         variant="contained"

@@ -55,9 +55,10 @@ export default function GeoSearch({ onItemSelected }) {
                 label="Address"
                 variant="standard"
                 value={query}
-                placeholder="Gartenstrasse 18, 10115 Berlin"
+                placeholder="Address"
                 onChange={handleInputChange}
                 onFocus={handleFocus}
+                style={{ width: "300px" }}
             />
             {showList && (
                 <Paper className="address-list" elevation={3}>

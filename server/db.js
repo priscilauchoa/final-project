@@ -25,7 +25,7 @@ exports.changeImg = (id, img) => {
     return db.query(
         `UPDATE needies
 SET img = $2
-WHERE needies.id = $1 RETURNING img AS url`,
+WHERE needies.id = $1;`,
         [id, img]
     );
 };
@@ -33,14 +33,13 @@ WHERE needies.id = $1 RETURNING img AS url`,
 async function createNewRegister({
     name,
     needy,
-
     category,
     description,
     img,
     geoJSON,
 }) {
     let newGeoJSON = JSON.stringify(geoJSON.geometry);
-    console.log("newGeoJSON", newGeoJSON);
+    // console.log("newGeoJSON", newGeoJSON);
     const result = await db.query(
         `INSERT INTO needies (name, needy, category, description, img, geom) 
         VALUES($1, $2, $3, $4, $5, ($6)::geometry) 

@@ -22,6 +22,7 @@ exports.deleteObject = (params) => {
 
 exports.upload = (req, res, next) => {
     if (!req.file) {
+        console.log("upload");
         return res.sendStatus(500);
     }
     const { filename, mimetype, size, path } = req.file;

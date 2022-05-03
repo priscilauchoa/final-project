@@ -95,11 +95,10 @@ export function Register() {
             .then((newRegister) => {
                 dispatch(receveidNewNeedies(newRegister));
                 setId(newRegister.id);
-                console.log("newRegisters", newRegister);
+                console.log("newRegisters", newRegister.id);
                 setOpen(true);
             });
     };
-    console.log("id-->", id);
     const handleSelectItem = (place) => {
         // console.log('### register place', place);
         handleChangeGeo(place);
@@ -115,6 +114,7 @@ export function Register() {
                 <Typography variant="h5">Register</Typography>
 
                 <TextField
+                    style={{ width: "300px" }}
                     id="adreess-input"
                     label="Name"
                     variant="standard"
@@ -123,6 +123,7 @@ export function Register() {
                     }}
                 />
                 <TextField
+                    style={{ width: "300px" }}
                     id="adreess-input"
                     label="How to Help"
                     variant="standard"
@@ -131,6 +132,7 @@ export function Register() {
                     }}
                 />
                 <TextField
+                    style={{ width: "300px" }}
                     id="adreess-input"
                     label="Description"
                     variant="standard"
@@ -181,6 +183,7 @@ export function Register() {
                     onClick={handleClick}
                     variant="contained"
                     href="#contained-buttons"
+                    style={{ margin: "20px 0" }}
                 >
                     Submit
                 </Button>

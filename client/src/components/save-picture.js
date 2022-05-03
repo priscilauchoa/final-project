@@ -11,21 +11,20 @@ export default class SavePicture extends Component {
     }
 
     handleClick(e) {
-        const id = this.props.id;
+        console.log("id-->***", this.props.userId);
+        const id = this.props.userId;
         e.preventDefault();
-        console.log("id in save-picture client side");
-        this.props.id;
-        this.setState({ file: e.target.files[0] });
         const file = this.state.file;
         let fd = new FormData();
         fd.append("file", file);
+        console.log("file", file);
         fetch(`/upload/${id}`, {
             method: "POST",
             body: fd,
         })
-            .then((res) => res.json())
-            .then(({ url }) => {
-                console.log("url", url);
+            .then((res) => {
+                console.log("img saved", res);
+                location.reload();
             })
             .catch((err) => {
                 console.log("err", err);
@@ -35,11 +34,15 @@ export default class SavePicture extends Component {
     render() {
         return (
             <>
-                <input type="file" accept="image/*"></input>
-                <button
+                <input
+                    type="file"
+                    accept="image/*"
                     onChange={(e) => {
                         this.setState({ file: e.target.files[0] });
-
+                    }}
+                ></input>
+                <button
+                    onClick={(e) => {
                         this.handleClick(e);
                     }}
                 >

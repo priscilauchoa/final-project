@@ -18,26 +18,28 @@ export default function App() {
         <>
             <BrowserRouter>
                 <MenuApp />
-                <Route exact path="/">
-                    <Header />
-                    <ContentHome />
-                </Route>
-                <Route path="/needies">
-                    <Header />
-                    <Needies />
-                </Route>
-                <Route path="/needy">
-                    <Needy />
-                </Route>
-                <Route path="/contact">
-                    <Contact />
-                </Route>
-                <Route path="/register">
-                    <Register />
-                </Route>
-                <Route path="/about">
-                    <About />
-                </Route>
+                <div className="container">
+                    <Route exact path="/">
+                        <Header />
+                        <ContentHome />
+                    </Route>
+                    <Route path="/needies">
+                        <Header />
+                        <Needies />
+                    </Route>
+                    <Route path="/needy">
+                        <Needy />
+                    </Route>
+                    <Route path="/contact">
+                        <Contact />
+                    </Route>
+                    <Route path="/register">
+                        <Register />
+                    </Route>
+                    <Route path="/about">
+                        <About />
+                    </Route>
+                </div>
             </BrowserRouter>
             <Footer />
         </>
