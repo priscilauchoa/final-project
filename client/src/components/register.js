@@ -71,7 +71,6 @@ export function Register() {
     };
 
     const handleClick = () => {
-        setOpen(true);
         fetch("/api/register", {
             method: "POST",
             headers: {
@@ -90,13 +89,17 @@ export function Register() {
                     },
                 },
             }),
-        }).then((newRegister) => {
-            // console.log("newRegisters")
-            dispatch(receveidNewNeedies(newRegister));
-            setId(newRegister.id);
-        });
-    };
+        })
+            .then((res) => res.json())
 
+            .then((newRegister) => {
+                dispatch(receveidNewNeedies(newRegister));
+                setId(newRegister.id);
+                console.log("newRegisters", newRegister);
+                setOpen(true);
+            });
+    };
+    console.log("id-->", id);
     const handleSelectItem = (place) => {
         // console.log('### register place', place);
         handleChangeGeo(place);

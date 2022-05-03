@@ -22,6 +22,20 @@ app.post("/api/register", async (req, res) => {
     }
 });
 
+app.post("/upload/:id", uploader.single("file"), s3.upload, (req, res) => {
+    let url = `https://s3.amazonaws.com/priscilasbucket/${req.file.filename}`;
+    console.log("ID in the server--->", req.session.id);
+    db.changeImg(req.session.id, url)
+        .then(({ rows }) => {
+            console.log("rows****", rows);
+            res.json(rows);
+        })
+        .catch((err) => {
+            console.log("error verify code secret", err);
+            res.json({ success: false });
+        });
+});
+
 app.get("/api/needies", function (req, res) {
     db.getNeedies().then(({ rows }) => {
         // console.log("rows in data base", rows);
@@ -56,19 +70,6 @@ app.get("/api/needies/:long/:lat", function (req, res) {
     );
 });
 
-app.post("/upload/:id", uploader.single("file"), s3.upload, (req, res) => {
-    let url = `https://s3.amazonaws.com/priscilasbucket/${req.file.filename}`;
-    console.log("ID in the server--->", req.session.id);
-    db.changeImg(req.session.id, url)
-        .then(({ rows }) => {
-            console.log("rows****", rows);
-            res.json(rows);
-        })
-        .catch((err) => {
-            console.log("error verify code secret", err);
-            res.json({ success: false });
-        });
-});
 app.post("/api/locations", function (req, res) {
     // const { name, lag, long } = req.body;
     console.log("body---> ", req.body);

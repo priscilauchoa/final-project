@@ -14,7 +14,7 @@ export default class SavePicture extends Component {
         const id = this.props.id;
         e.preventDefault();
         console.log("id in save-picture client side");
-
+        this.props.id;
         this.setState({ file: e.target.files[0] });
         const file = this.state.file;
         let fd = new FormData();
