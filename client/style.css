@@ -17,12 +17,14 @@ main {
 #needy {
     display: flex;
     width: 100%;
-    justify-content: space-around;
+    justify-content: space-evenly;
+    margin: 5% 0;
+    align-items: center;
 }
 
 .text-area-needy {
-    width: 400px;
-    height: 150px;
+    width: 188px;
+    height: 126px;
     border-radius: 5px;
     border: 1px solid rgba(32, 191, 177, 0.533);
     padding: 13px;
@@ -62,6 +64,7 @@ main section {
 }
 .img-needy {
     width: 500px;
+    border-radius: 5px;
 }
 
 .list-places {
