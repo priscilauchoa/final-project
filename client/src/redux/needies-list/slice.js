@@ -20,7 +20,7 @@ export function receveidNeedies(rows) {
 }
 
 export function receveidNewNeedies(needy) {
-    console.log("needy in new messgs", needy);
+    // console.log("needy in new Needies reducer", needy);
     return {
         type: "needies/new",
         payload: needy,

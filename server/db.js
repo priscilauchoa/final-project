@@ -4,7 +4,7 @@ const db = spicedPg(`postgres:postgres:postgres@localhost:5432/places`);
 
 exports.getNeedies = () => {
     return db.query(
-        `SELECT name, needy, category, description,img, ST_Distance(ST_MakePoint(13.383309, 52.516806)::geography, geom)
+        `SELECT name, needy, category, description, img, ST_AsGeoJSON(geom), ST_Distance(ST_MakePoint(13.383309, 52.516806)::geography, geom)
 AS distance
 FROM needies
 ORDER BY distance ASC;`
@@ -13,7 +13,7 @@ ORDER BY distance ASC;`
 
 exports.getNeediesByCoordinates = (long, lat) => {
     return db.query(
-        `SELECT name, needy, category, description, img, ST_Distance(ST_MakePoint($1, $2)::geography, geom)
+        `SELECT name, needy, category, description, img, ST_AsGeoJSON(geom), ST_Distance(ST_MakePoint($1, $2)::geography, geom)
 AS distance
 FROM needies
 ORDER BY distance ASC;`,
@@ -39,16 +39,6 @@ async function createNewRegister({
     img,
     geoJSON,
 }) {
-    console.log(
-        "data######",
-        name,
-        needy,
-
-        category,
-        description,
-        img,
-        geoJSON
-    );
     let newGeoJSON = JSON.stringify(geoJSON.geometry);
     console.log("newGeoJSON", newGeoJSON);
     const result = await db.query(

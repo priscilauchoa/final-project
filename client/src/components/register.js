@@ -33,7 +33,7 @@ const style = {
     pb: 3,
 };
 
-export function Register(props) {
+export function Register() {
     const dispatch = useDispatch();
 
     const [newNeedy, setNewNeedy] = useState();
@@ -46,17 +46,14 @@ export function Register(props) {
     const [lat, setLat] = useState("");
     const [type, setType] = useState("");
     const [typeGeometry, setTypeGeometry] = useState("");
-    const [modal, setModal] = useState(false);
     const [img, setImg] = useState({});
     const [id, setId] = useState();
-
     const [open, setOpen] = React.useState(false);
     const handleClose = () => {
         setOpen(false);
     };
 
     const handleChangeGeo = (place) => {
-        // console.log("event geo((((", place);
         setCategory(place.place_name);
         setLong(place.geometry.coordinates[0]);
         setLat(place.geometry.coordinates[1]);
@@ -71,13 +68,8 @@ export function Register(props) {
 
     const handleChangeImg = (e) => {
         setImg(e);
-
-        console.log("img", img);
     };
 
-    // console.log("img****", img);
-
-    console.log("placessss in new neddies ,", geoSearch);
     const handleClick = () => {
         setOpen(true);
         fetch("/api/register", {
@@ -98,7 +90,7 @@ export function Register(props) {
                     },
                 },
             }),
-        }).then(({ newRegister }) => {
+        }).then((newRegister) => {
             // console.log("newRegisters")
             dispatch(receveidNewNeedies(newRegister));
             setId(newRegister.id);
@@ -110,9 +102,9 @@ export function Register(props) {
         handleChangeGeo(place);
     };
 
-    const imageSet = (image) => {
-        setImg(image);
-    };
+    // const imageSet = (image) => {
+    //     setImg(image);
+    // };
 
     return (
         <>
@@ -181,11 +173,7 @@ export function Register(props) {
                         </Modal>
                     </FormControl>
                 </Box>
-                {/* <SubmitButton
-                    onClick={() => {
-                        handleClick;
-                    }}
-                /> */}
+
                 <Button
                     onClick={handleClick}
                     variant="contained"

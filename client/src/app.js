@@ -7,6 +7,8 @@ import Contact from "./components/contact.js";
 import ContentHome from "./components/content-home.js";
 import { Needies } from "./components/needies.js";
 import { Needy } from "./components/needy";
+import Footer from "./components/footer";
+import About from "./components/about.js";
 import { Register } from "./components/register.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./app.css";
@@ -33,7 +35,11 @@ export default function App() {
                 <Route path="/register">
                     <Register />
                 </Route>
+                <Route path="/about">
+                    <About />
+                </Route>
             </BrowserRouter>
+            <Footer />
         </>
     );
 }

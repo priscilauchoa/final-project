@@ -1,0 +1,17 @@
+.map-container {
+    height: 379px;
+    margin: 0 auto;
+    width: 70%;
+    padding-bottom: 44px;
+}
+
+.marker {
+    background-image: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse2.mm.bing.net%2Fth%3Fid%3DOIP.pZdeFm9OnSnqnDO0xCp0tAHaHa%26pid%3DApi&f=1);
+    background-color: lightsalmon;
+    background-size: 100%;
+    border: 1px solid lightsalmon;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+}

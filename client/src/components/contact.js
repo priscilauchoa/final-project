@@ -1,10 +1,19 @@
 import React from "react";
-import { TextField, Button } from "@material-ui/core";
+import { TextField } from "@material-ui/core";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 export default function Contact() {
     return (
         <>
-            <section className="contact-container">
+            <section className="new-needy-container">
+                <Typography
+                    style={{ textAlign: "center", margin: "30px" }}
+                    variant="h4"
+                    component="div"
+                >
+                    Contact us
+                </Typography>
                 <TextField
                     id="adreess-input"
                     label="First Name"

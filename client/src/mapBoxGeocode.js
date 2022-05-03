@@ -7,11 +7,10 @@ import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
 
 import "./mapBoxGeocode.css";
+import { ACCESS_TOKEN } from "./mapBoxConstants";
 
-const geocodeAccessToken =
-    "pk.eyJ1IjoicHJpc2NpbGFmbG9yZXMiLCJhIjoiY2wyaHEyNnA0MGc5bzNjbm5ldm9zeWQwaCJ9.2wKNqQY375w7wVhbVi1PjQ";
 const geocodeClient = mapboxGeocode({
-    accessToken: geocodeAccessToken,
+    accessToken: ACCESS_TOKEN,
 });
 
 export default function GeoSearch({ onItemSelected }) {
@@ -19,12 +18,14 @@ export default function GeoSearch({ onItemSelected }) {
     const [places, setPlaces] = useState([]);
     const [showList, setShowList] = useState(false);
 
-    // console.log('### onItemSelected', onItemSelected);
-
     const handleListItemClick = (place) => {
         setShowList(false);
         setQuery(place.place_name);
         if (onItemSelected) onItemSelected(place);
+    };
+
+    const handleFocus = () => {
+        setShowList(true);
     };
 
     const handleInputChange = (e) => {
@@ -44,7 +45,6 @@ export default function GeoSearch({ onItemSelected }) {
             .send()
             .then((response) => {
                 setPlaces(response.body.features);
-                setShowList(true);
             });
     }, [query]);
 
@@ -57,6 +57,7 @@ export default function GeoSearch({ onItemSelected }) {
                 value={query}
                 placeholder="Gartenstrasse 18, 10115 Berlin"
                 onChange={handleInputChange}
+                onFocus={handleFocus}
             />
             {showList && (
                 <Paper className="address-list" elevation={3}>

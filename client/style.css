@@ -112,8 +112,8 @@ ul {
 .container-geo,
 .container-search {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    /* flex-direction: column; */
+    /* justify-content: center; */
     align-items: center;
 }
 .container-search div {
@@ -170,9 +170,21 @@ div {
     filter: opacity(65%);
 }
 
+.about {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    align-content: center;
+    height: 757px;
+}
+
+.img-about {
+    width: 500px;
+}
+
 .header-img-h1 {
     position: absolute;
-    top: 36%;
+    top: 30%;
     left: 5%;
     /* color: white; */
     color: #f06125;

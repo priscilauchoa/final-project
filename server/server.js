@@ -22,10 +22,9 @@ app.post("/api/register", async (req, res) => {
     }
 });
 
-
 app.get("/api/needies", function (req, res) {
     db.getNeedies().then(({ rows }) => {
-        console.log("rows in data base", rows);
+        // console.log("rows in data base", rows);
         res.json({ rows });
     });
 });
@@ -57,10 +56,10 @@ app.get("/api/needies/:long/:lat", function (req, res) {
     );
 });
 
-app.post("/upload", uploader.single("file"), s3.upload, (req, res) => {
+app.post("/upload/:id", uploader.single("file"), s3.upload, (req, res) => {
     let url = `https://s3.amazonaws.com/priscilasbucket/${req.file.filename}`;
-
-    db.changeImg(req.session.userId, url)
+    console.log("ID in the server--->", req.session.id);
+    db.changeImg(req.session.id, url)
         .then(({ rows }) => {
             console.log("rows****", rows);
             res.json(rows);

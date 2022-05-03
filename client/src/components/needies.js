@@ -12,6 +12,7 @@ import GeoSearch from "../mapBoxGeocode";
 import useFetchNeedies from "../hooks/useFetchNeedies";
 import { useHistory } from "react-router-dom";
 import { receveidNeedy } from "../redux/help/slice.js";
+import Map from "../mapBoxMap";
 
 export function Needies() {
     const history = useHistory();
@@ -109,6 +110,7 @@ export function Needies() {
                     </div>
                 </section>
             </section>
+            <Map />
         </>
     );
 }

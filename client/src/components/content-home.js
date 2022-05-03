@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -7,11 +7,25 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import GeoSearch from "../mapBoxGeocode";
-// import { receveidNeedies } from "../redux/needies-list/slice";
+import Map from "../mapBoxMap";
 import useFetchNeedies from "../hooks/useFetchNeedies";
+import { receveidNeedies } from "../redux/needies-list/slice";
 
 export default function ContentHome() {
     const { handleSelectItem, handleSubmitClick } = useFetchNeedies();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        fetch("/api/needies")
+            .then((res) => res.json())
+            .then(({ rows }) => {
+                if (!rows) {
+                    history.push("/");
+                } else {
+                    dispatch(receveidNeedies(rows));
+                }
+            });
+    }, []);
 
     return (
         <>
@@ -19,6 +33,15 @@ export default function ContentHome() {
                 <GeoSearch onItemSelected={handleSelectItem} />
                 <Button onClick={handleSubmitClick}>Search</Button>
             </div>
+            <Map />
+
+            <Typography
+                style={{ textAlign: "center", margin: "30px" }}
+                variant="h4"
+                component="div"
+            >
+                Causes
+            </Typography>
             <section className="content-home">
                 <Card sx={{ width: 250, height: 370 }}>
                     <CardMedia
@@ -27,9 +50,7 @@ export default function ContentHome() {
                         image="https://blog.govolunteer.com/wp-content/uploads/2020/01/Copy-of-02_BLOG_Featured-Image-6-1-500x383.jpg"
                         alt="volunteer work"
                     />
-                    <Typography gutterBottom variant="h4" component="div">
-                        Causes
-                    </Typography>
+
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="div">
                             Volunteer Work
