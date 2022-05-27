@@ -5,7 +5,6 @@ import List from "@mui/material/List";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Paper from "@mui/material/Paper";
-
 import "./mapBoxGeocode.css";
 import { ACCESS_TOKEN } from "./mapBoxConstants";
 
@@ -35,7 +34,6 @@ export default function GeoSearch({ onItemSelected }) {
     useEffect(() => {
         if (query.length < 3) return;
 
-        // geocoding with countries
         geocodeClient
             .forwardGeocode({
                 query,

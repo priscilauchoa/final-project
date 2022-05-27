@@ -18,7 +18,7 @@ export default function Mapbox() {
     const [zoom, setZoom] = useState(11);
 
     useEffect(() => {
-        if (map.current) return; // initialize map only once
+        if (map.current) return; 
         map.current = new mapboxgl.Map({
             container: mapContainer.current,
             style: 'mapbox://styles/mapbox/streets-v11',
@@ -28,7 +28,7 @@ export default function Mapbox() {
     }, [map, mapContainer]);
 
     useEffect(() => {
-        if (!map.current) return; // wait for map to initialize
+        if (!map.current) return; 
         map.current.on('move', () => {
             setLng(map.current.getCenter().lng.toFixed(4));
             setLat(map.current.getCenter().lat.toFixed(4));

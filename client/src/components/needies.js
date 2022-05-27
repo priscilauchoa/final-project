@@ -1,5 +1,5 @@
 // import { useSelector } from "react-redux";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import * as React from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -20,9 +20,7 @@ export function Needies() {
 
     const { handleSelectItem, handleSubmitClick } = useFetchNeedies();
     const needies = useSelector((state) => state.Needies && state.Needies);
-    // const needies = useSelector((state) => state?.needies);
     const neediesContainer = useRef();
-    // console.log("needy))))))--->", needies);
 
     useEffect(() => {
         neediesContainer.current.scrollTop =
@@ -39,7 +37,6 @@ export function Needies() {
     return (
         <>
             <div className="container-search">
-                
                 <div>
                     <GeoSearch onItemSelected={handleSelectItem} />
                 </div>
@@ -56,12 +53,12 @@ export function Needies() {
                                             sx={{
                                                 width: "258px",
                                                 height: "320px",
-                                                paddingBottom: "10px",
+                                                paddingBottom: "32px",
                                             }}
                                         >
                                             <CardMedia
                                                 component="img"
-                                                height="130"
+                                                height="135"
                                                 image={needy.img}
                                             />
                                             <CardContent>

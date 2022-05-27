@@ -7,14 +7,12 @@ const { uploader } = require("./upload");
 const s3 = require("./s3");
 
 app.use(compression());
-
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 app.use(express.json());
 
 app.post("/api/register", async (req, res) => {
     try {
         const newRegister = await db.createNewRegister(req.body);
-        // console.log("newRegister-->", newRegister);
         res.json(newRegister);
     } catch (error) {
         console.log("[/api/register] error saving place", error, req.body);
@@ -27,7 +25,6 @@ app.post("/upload/:id", uploader.single("file"), s3.upload, (req, res) => {
     console.log("ID in the server--->", req.params.id);
     db.changeImg(req.params.id, url)
         .then(({ rows }) => {
-            console.log("rows****", rows);
             res.json({ success: true });
         })
         .catch((err) => {
@@ -38,17 +35,14 @@ app.post("/upload/:id", uploader.single("file"), s3.upload, (req, res) => {
 
 app.get("/api/needies", function (req, res) {
     db.getNeedies().then(({ rows }) => {
-        // console.log("rows in data base", rows);
         res.json({ rows });
     });
 });
 
 app.get("/api/needies/:long/:lat", function (req, res) {
-    // console.log("***", req.params.long, req.params.lat);
     db.getNeediesByCoordinates(req.params.long, req.params.lat).then(
         ({ rows }) => {
-            // console.log("rows in data base", rows);
-            const baseDistance = 3000;
+            const baseDistance = 1000;
             let distanceFactor = 1;
             let currentDistance = baseDistance * distanceFactor;
 
@@ -56,27 +50,17 @@ app.get("/api/needies/:long/:lat", function (req, res) {
 
             while (
                 filteredRows.length === 0 &&
-                currentDistance <= 10 * baseDistance
+                currentDistance <= 3 * baseDistance
             ) {
                 filteredRows = rows.filter(
                     (row) => row.distance < currentDistance
                 );
-
-                currentDistance = baseDistance * ++distanceFactor;
+                distanceFactor += 1;
+                currentDistance = baseDistance * distanceFactor;
             }
-            // console.log("filteredRows", filteredRows);
             res.json({ rows: filteredRows });
         }
     );
-});
-
-app.post("/api/locations", function (req, res) {
-    // const { name, lag, long } = req.body;
-    // console.log("body---> ", req.body);
-    // db.insertLocation(name, lag, long).then(({ rows }) => {
-    //     console.log("rows in data base", rows);
-    //     res.json({ rows });
-    // });
 });
 
 app.get("*", function (req, res) {

@@ -111,7 +111,7 @@ export function Register() {
     return (
         <>
             <section className="new-needy-container">
-                <Typography variant="h5">Register</Typography>
+                <Typography variant="h5">Register to receive help</Typography>
 
                 <TextField
                     style={{ width: "300px" }}
