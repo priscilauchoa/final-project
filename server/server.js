@@ -5,10 +5,24 @@ const path = require("path");
 const db = require("./db");
 const { uploader } = require("./upload");
 const s3 = require("./s3");
+const cookieSession = require("cookie-session");
 
 app.use(compression());
 app.use(express.static(path.join(__dirname, "..", "client", "public")));
 app.use(express.json());
+
+const sessionSecret =
+    process.env.SESS_SECRET || require("./secret.json").SESS_SECRET;
+
+app.use(
+    cookieSession({
+        secret: sessionSecret,
+        maxAge: 1000 * 60 * 60 * 24 * 14,
+        sameSite: true,
+    })
+);
+
+
 
 app.post("/api/register", async (req, res) => {
     try {
