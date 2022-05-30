@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, "..", "client", "public")));
 app.use(express.json());
 
 const sessionSecret =
-    process.env.SESS_SECRET || require("./secret.json").SESS_SECRET;
+    process.env.SESS_SECRET || require("../secrets.json").SESS_SECRET;
 
 app.use(
     cookieSession({
@@ -21,8 +21,6 @@ app.use(
         sameSite: true,
     })
 );
-
-
 
 app.post("/api/register", async (req, res) => {
     try {

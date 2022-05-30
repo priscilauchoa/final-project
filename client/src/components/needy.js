@@ -10,12 +10,10 @@ import { useHistory } from "react-router";
 export function Needy() {
     const [contactInput, showContactInput] = useState(true);
     const needy = useSelector((state) => state.Needy && state.Needy);
-    // const needyContainer = useRef();
+ 
     let history = useHistory();
 
     console.log("needy in needy.js--->", needy);
-    // useEffect(() => {}, []);
-    // TO DO - QUANDO CLICKAR EM HELP NO CARD, RENDERIZAR A PAGINA COM DETALHES DA ONG ____
 
     const handleClick = () => {
         showContactInput(false);
@@ -57,27 +55,20 @@ export function Needy() {
                                 id="adreess-input"
                                 label="First Name"
                                 variant="standard"
-                                // onChange={(event) => {
-                                //     setName(event.target.value);
-                                // }}
+                              
                             />
                             <TextField
                                 style={{ width: "300px" }}
                                 id="adreess-input"
                                 label="Last Name"
                                 variant="standard"
-                                // onChange={(event) => {
-                                //     setNeedy(event.target.value);
-                                // }}
                             />
                             <TextField
                                 style={{ width: "300px" }}
                                 id="adreess-input"
                                 label="Description"
                                 variant="standard"
-                                // onChange={(event) => {
-                                //     setDescription(event.target.value);
-                                // }}
+                              
                             />
                             <TextareaAutosize
                                 className="text-area-needy"

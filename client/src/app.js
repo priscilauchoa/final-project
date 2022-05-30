@@ -10,6 +10,7 @@ import { Needy } from "./components/needy";
 import Footer from "./components/footer";
 import About from "./components/about.js";
 import { Register } from "./components/register.js";
+import { AllNeedies } from "./components/allNeedies.js";
 import { BrowserRouter, Route } from "react-router-dom";
 import "./app.css";
 
@@ -35,6 +36,9 @@ export default function App() {
                     </Route>
                     <Route path="/register">
                         <Register />
+                    </Route>
+                    <Route path="/allneedies">
+                        <AllNeedies />
                     </Route>
                     <Route path="/about">
                         <About />
