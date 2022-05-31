@@ -14,30 +14,20 @@ export function AllNeedies() {
 
     console.log("needy in needy.js--->", needies);
 
-    // const handleClick = () => {
-    //     showallNeddies(false);
-    // };
     return (
-        <>
-            <div>
-                <Typography
-                    style={{ textAlign: "center", margin: "30px" }}
-                    variant="h4"
-                    component="div"
-                >
-                    Needies
-                </Typography>
-
-                <section id="needy">
-                    <div>
-                        {/* <img className="img-needy" src={needies.img}></img> */}
-
-                        <Typography gutterBottom variant="h5" component="div">
-                            {needies}
-                        </Typography>
-                    </div>
-                </section>
+        <section>
+            <div className="needies-container">
+                {needies.length > 0 &&
+                    needies.map((needy) => {
+                        return (
+                            <div className="needies" key={needy.id}>
+                                <p>{needy.needy}</p>
+                                <p>{needy.description}</p>
+                                <p>{needy.name}</p>
+                            </div>
+                        );
+                    })}
             </div>
-        </>
+        </section>
     );
 }
