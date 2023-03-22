@@ -3,5 +3,6 @@ node_modules
 secrets.json
 client/public/bundle.js
 client/public/bundle.js.LICENSE.txt
+db/data
 bundle.css
 .env

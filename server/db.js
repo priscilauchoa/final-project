@@ -2,7 +2,7 @@ const spicedPg = require("spiced-pg");
 
 const db = spicedPg(
     process.env.DATABASE_URL ||
-        `postgres:postgres:postgres@localhost:5432/places`
+        `public:admin_usr:secret_pwd@localhost:5432/places_db`
 );
 
 exports.getNeedies = () => {
