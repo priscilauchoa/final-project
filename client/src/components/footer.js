@@ -6,7 +6,7 @@ const useStyles = makeStyles({
     footer: {
         // backgroundColor: "#00A3BC",  
         color: "white",
-        padding: "20px",
+        padding: "10px",
         marginTop: "40px",
         position: 'sticky',
         bottom: 0,
@@ -26,7 +26,7 @@ export default function Footer() {
                     <Typography variant="p"> @supportyourgang</Typography>
                     <Typography variant="p"> Contact</Typography>
                     <Typography variant="p">
-                        CHausseestraße 41B, 10115, Berlin
+                        Chausseestraße 41B, 10115, Berlin
                     </Typography>
                     <Typography variant="p">Contact: 017665674560</Typography>
                 </Toolbar>
