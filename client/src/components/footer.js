@@ -4,21 +4,24 @@ import { Typography } from "@material-ui/core";
 
 const useStyles = makeStyles({
     footer: {
-        backgroundColor: "#00A3BC",
+        // backgroundColor: "#00A3BC",  
         color: "white",
         padding: "20px",
         marginTop: "40px",
+        position: 'sticky',
+        bottom: 0,
+        width: '100%',  
     },
-    content: {
-        display: "flex",
-        justifyContent: "space-around",
-    },
+    // content: {
+    //     display: "flex",
+    //     justifyContent: "space-around",
+    // },
 });
 export default function Footer() {
     const classes = useStyles();
     return (
         <Box sx={{ m: 0 }}>
-            <AppBar position="static" className={classes.footer}>
+            <AppBar className={classes.footer}>
                 <Toolbar className={classes.content}>
                     <Typography variant="p"> @supportyourgang</Typography>
                     <Typography variant="p"> Contact</Typography>
