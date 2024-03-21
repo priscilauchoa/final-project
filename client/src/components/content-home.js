@@ -34,7 +34,7 @@ export default function ContentHome() {
             <div className="container-geo">
                 <GeoSearch onItemSelected={handleSelectItem} />
                 <Button
-                    style={{ height: "35px", margin: "44px 0 0 0" }}
+                    style={{ height: "35px", margin: "44px 0 0 0", border: "0.5px solid #00A3BC", color: "#00A3BC" }}
                     variant="outlined"
                     onClick={handleSubmitClick}
                 >
@@ -70,8 +70,8 @@ export default function ContentHome() {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Share</Button>
-                        <Button size="small">Learn More</Button>
+                        <Button  style={{ color: "#00A3BC" }} size="small">Share</Button>
+                        <Button  style={{ color: "#00A3BC" }} size="small">Learn More</Button>
                     </CardActions>
                 </Card>
                 <Card sx={{ width: 250, height: 370 }}>
@@ -92,8 +92,8 @@ export default function ContentHome() {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Share</Button>
-                        <Button size="small">Learn More</Button>
+                        <Button style={{ color: "#00A3BC" }} size="small">Share</Button>
+                        <Button style={{ color: "#00A3BC" }} size="small">Learn More</Button>
                     </CardActions>
                 </Card>
                 <Card sx={{ width: 250, height: 370 }}>
@@ -114,8 +114,8 @@ export default function ContentHome() {
                         </Typography>
                     </CardContent>
                     <CardActions>
-                        <Button size="small">Share</Button>
-                        <Button size="small">Learn More</Button>
+                        <Button style={{ color: "#00A3BC" }} size="small">Share</Button>
+                        <Button style={{ color: "#00A3BC" }} size="small">Learn More</Button>
                     </CardActions>
                 </Card>
             </section>

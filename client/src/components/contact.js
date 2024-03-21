@@ -46,7 +46,7 @@ export default function Contact() {
                 />
                 <div className="btn-contact">
                     <Button
-                        style={{ margin: "10px 0" }}
+                        style={{ margin: "10px 0", background: "#00A3BC" }}
                         // onClick={handleClick}
 
                         variant="contained"

@@ -226,3 +226,5 @@ div {
     justify-content: space-evenly;
     flex-direction: row;
 }
+
+.MuiAppBar-colorPrimary {background-color: #00A3BC;}

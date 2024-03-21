@@ -183,7 +183,7 @@ export function Register() {
                     onClick={handleClick}
                     variant="contained"
                     href="#contained-buttons"
-                    style={{ margin: "20px 0" }}
+                    style={{ margin: "20px 0", background: "#00A3BC"}}
                 >
                     Submit
                 </Button>
